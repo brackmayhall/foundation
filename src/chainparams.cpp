@@ -49,7 +49,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Trump’s Silence Leaves Struggle Against Russia Without Leader";
-    const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("123484710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -117,17 +117,18 @@ public:
         pchMessageStart[3] = 0xbe; // 190
         nDefaultPort = 9454;
         nPruneAfterHeight = 100000;
-
-        genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
+        
+        // time, nonce, bits, version, coin count
+        genesis = CreateGenesisBlock(1518927823, 2085664418, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0x31ef0c6f394766818734571e1177badfa73318cf7078f2968f16cb33fe28fb64"));
+        assert(genesis.hashMerkleRoot == uint256S("0x21862b7a4e1d4b32c97f4fcdebc2d8cfc8c09dce3081567c230e2b9cbb4b52cb"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vFixedSeeds.clear();
         vSeeds.clear();
         /*
-        vSeeds.emplace_back("seed-a.dinecoin.loshan.co.uk", true);
+        vSeeds.emplace_back("18.218.229.103", true);
         vSeeds.emplace_back("dnsseed.thrasher.io", true);
         vSeeds.emplace_back("dnsseed.dinecointools.com", true);
         vSeeds.emplace_back("dnsseed.dinecoinpool.org", true);
@@ -155,7 +156,7 @@ public:
 
         chainTxData = ChainTxData{
             // Data as of block 59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011 (height 1353397).
-            1518921258, // * UNIX timestamp of last known number of transactions
+            1518927823, // * UNIX timestamp of last known number of transactions
             0,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
             0.06     // * estimated number of transactions per second after that timestamp
