@@ -1,6 +1,7 @@
-+/miniupnpc-2.0.20171212
-+/db4
-+/db-4.8.30.NC
+# libs
+/miniupnpd-2.0.20180203
+/db4
+/db-4.8.30.NC
 
 *.tar.gz
 
