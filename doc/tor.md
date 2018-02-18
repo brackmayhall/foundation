@@ -43,7 +43,7 @@ config file):
 
 	HiddenServiceDir /var/lib/tor/foundation-service/
 	HiddenServicePort 9454 127.0.0.1:9333
-	HiddenServicePort 19335 127.0.0.1:19335
+	HiddenServicePort 19455 127.0.0.1:19335
 
 The directory can be different of course, but (both) port numbers should be equal to
 your foundationd's P2P listen port (9454 by default).
