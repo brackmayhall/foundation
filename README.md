@@ -1,7 +1,7 @@
 Foundation Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/foundation-project/foundation.svg?branch=master)](https://travis-ci.org/foundation-project/foundation)
+[![Build Status](https://travis-ci.org/brackmayhall/foundation.svg?branch=master)](https://travis-ci.org/brackmayhall/foundation)
 
 https://foundation.org
 
@@ -27,7 +27,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/foundation-project/foundation/tags) are created
+completely stable. [Tags](https://github.com/brackmayhall/foundation/tags) are created
 regularly to indicate new official, stable release versions of Foundation Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).

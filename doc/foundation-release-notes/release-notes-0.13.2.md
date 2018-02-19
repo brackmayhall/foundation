@@ -7,7 +7,7 @@ It is recommended to upgrade to this version.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/foundation-project/foundation/issues>
+  <https://github.com/brackmayhall/foundation/issues>
 
 Compatibility
 ==============

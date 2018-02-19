@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/foundation-project/foundation-detached-sigs.git"
+- "url": "https://github.com/brackmayhall/foundation-detached-sigs.git"
   "dir": "signature"
 files:
 - "foundation-osx-unsigned.tar.gz"

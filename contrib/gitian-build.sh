@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the foundation, gitian-builder, gitian.sigs.FDN, and foundation-detached-sigs.
+Run this script from the directory containing the foundation, gitian-builder, gitian.sigs.fdn, and foundation-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -233,7 +233,7 @@ if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
     git clone https://github.com/brackmayhall/gitian.sigs.fdn.git
-    #git clone https://github.com/foundation-project/foundation-detached-sigs.git
+    #git clone https://github.com/brackmayhall/foundation-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]

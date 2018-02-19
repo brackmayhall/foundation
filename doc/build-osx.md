@@ -33,7 +33,7 @@ Build Foundation Core
 
 1. Clone the foundation source code and cd into `foundation`
 
-        git clone https://github.com/foundation-project/foundation
+        git clone https://github.com/brackmayhall/foundation
         cd foundation
 
 2.  Build foundation-core:
