@@ -10,17 +10,17 @@ setupenv=false
 
 # Systems to build
 linux=true
-windows=true
-osx=true
+windows=false
+osx=false
 
 # Other Basic variables
-SIGNER=
-VERSION=
+SIGNER=brackston
+VERSION=1
 commit=false
-url=https://github.com/foundation-project/foundation
+url=https://github.com/brackmayhall/foundation
 proc=2
 mem=2000
-lxc=true
+lxc=false
 osslTarUrl=http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
 osslPatchUrl=https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
 scriptName=$(basename -- "$0")
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/foundation-project/foundation
+-u|--url	Specify the URL of the repository. Default is https://github.com/brackmayhall/foundation
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -232,8 +232,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/foundation-project/gitian.sigs.FDN.git
-    git clone https://github.com/foundation-project/foundation-detached-sigs.git
+    git clone https://github.com/brackmayhall/gitian.sigs.fdn.git
+    #git clone https://github.com/foundation-project/foundation-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -275,7 +275,7 @@ then
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit foundation=${COMMIT} --url foundation=${url} ../foundation/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.FDN/ ../foundation/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.fdn/ ../foundation/contrib/gitian-descriptors/gitian-linux.yml
 	    mv build/out/foundation-*.tar.gz build/out/src/foundation-*.tar.gz ../foundation-binaries/${VERSION}
 	fi
 	# Windows
@@ -285,7 +285,7 @@ then
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit foundation=${COMMIT} --url foundation=${url} ../foundation/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.FDN/ ../foundation/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.fdn/ ../foundation/contrib/gitian-descriptors/gitian-win.yml
 	    mv build/out/foundation-*-win-unsigned.tar.gz inputs/foundation-win-unsigned.tar.gz
 	    mv build/out/foundation-*.zip build/out/foundation-*.exe ../foundation-binaries/${VERSION}
 	fi
@@ -296,7 +296,7 @@ then
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit foundation=${COMMIT} --url foundation=${url} ../foundation/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.FDN/ ../foundation/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.fdn/ ../foundation/contrib/gitian-descriptors/gitian-osx.yml
 	    mv build/out/foundation-*-osx-unsigned.tar.gz inputs/foundation-osx-unsigned.tar.gz
 	    mv build/out/foundation-*.tar.gz build/out/foundation-*.dmg ../foundation-binaries/${VERSION}
 	fi
@@ -325,27 +325,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.FDN/ -r ${VERSION}-linux ../foundation/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs.fdn/ -r ${VERSION}-linux ../foundation/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.FDN/ -r ${VERSION}-win-unsigned ../foundation/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs.fdn/ -r ${VERSION}-win-unsigned ../foundation/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs.FDN/ -r ${VERSION}-osx-unsigned ../foundation/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs.fdn/ -r ${VERSION}-osx-unsigned ../foundation/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.FDN/ -r ${VERSION}-osx-signed ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.fdn/ -r ${VERSION}-osx-signed ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.FDN/ -r ${VERSION}-osx-signed ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs.fdn/ -r ${VERSION}-osx-signed ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -361,7 +361,7 @@ then
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../foundation/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.FDN/ ../foundation/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.fdn/ ../foundation/contrib/gitian-descriptors/gitian-win-signer.yml
 	    mv build/out/foundation-*win64-setup.exe ../foundation-binaries/${VERSION}
 	    mv build/out/foundation-*win32-setup.exe ../foundation-binaries/${VERSION}
 	fi
@@ -372,7 +372,7 @@ then
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.FDN/ ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.fdn/ ../foundation/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    mv build/out/foundation-osx-signed.dmg ../foundation-binaries/${VERSION}/foundation-${VERSION}-osx.dmg
 	fi
 	popd
