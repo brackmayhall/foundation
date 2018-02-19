@@ -14,7 +14,7 @@ windows=false
 osx=false
 
 # Other Basic variables
-SIGNER=brackston
+SIGNER=D92ECAEB4F88BD99
 VERSION=1
 commit=false
 url=https://github.com/brackmayhall/foundation
