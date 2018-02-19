@@ -315,7 +315,7 @@ Clone the git repositories for foundation and Gitian.
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
 git clone https://github.com/brackmayhall/foundation
-git clone https://github.com/brackmayhall/gitian.sigs.FDN.git
+git clone https://github.com/brackmayhall/gitian.sigs.fdn.git
 ```
 
 Setting up the Gitian image
@@ -480,5 +480,5 @@ Uploading signatures
 ---------------------
 
 After building and signing you can push your signatures (both the `.assert` and `.assert.sig` files) to the
-[brackmayhall/gitian.sigs.FDN](https://github.com/brackmayhall/gitian.sigs.FDN/) repository, or if that's not possible create a pull
+[brackmayhall/gitian.sigs.fdn](https://github.com/brackmayhall/gitian.sigs.fdn/) repository, or if that's not possible create a pull
 request. You can also mail the files to thrasher (thrasher@addictionsofware.com) and he will commit them.
