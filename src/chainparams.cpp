@@ -126,12 +126,6 @@ public:
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.emplace_back("18.218.229.103", true);
-        /*
-        vSeeds.emplace_back("dnsseed.thrasher.io", true);
-        vSeeds.emplace_back("dnsseed.dinecointools.com", true);
-        vSeeds.emplace_back("dnsseed.dinecoinpool.org", true);
-        vSeeds.emplace_back("dnsseed.koin-project.com", false);
-        */
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -148,7 +142,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x001")}
+                {0, uint256S("0x31ef0c6f394766818734571e1177badfa73318cf7078f2968f16cb33fe28fb64")}
             }
         };
 
@@ -213,14 +207,7 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x374a6b9c6e61ac4c88a40d47889bd1e44eb8ec06d92e9862b6a06aa15e971561"));
         assert(genesis.hashMerkleRoot == uint256S("0x21862b7a4e1d4b32c97f4fcdebc2d8cfc8c09dce3081567c230e2b9cbb4b52cb"));
 
-        vFixedSeeds.clear();
-        vSeeds.clear();
-        // nodes with support for servicebits filtering should be at the top
-        /*
-        vSeeds.emplace_back("testnet-seed.foundationtools.com", true);
-        vSeeds.emplace_back("seed-b.foundation.loshan.co.uk", true);
-        vSeeds.emplace_back("dnsseed-testnet.thrasher.io", true);
-        */
+        vSeeds.emplace_back("18.218.229.103", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -237,7 +224,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x001")}
+                {0, uint256S("0x374a6b9c6e61ac4c88a40d47889bd1e44eb8ec06d92e9862b6a06aa15e971561")}
             }
         };
 
@@ -307,7 +294,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x001")},
+                {0, uint256S("0x99ef1b54515348f9bf291c471e77b52315fd862ea50fc2cb72c618084cbb35c7")},
             }
         };
 
